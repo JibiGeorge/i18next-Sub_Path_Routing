@@ -14,6 +14,7 @@ const Header = () => {
     const handleLocaleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedLocale = e.target.value;
         setSelectedLocale(selectedLocale);
+        document.cookie = `NEXT_LOCALE=${selectedLocale}`
         push(pathname, pathname, { locale: selectedLocale });
     }
 

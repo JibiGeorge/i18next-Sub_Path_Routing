@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useState } from 'react'
 
 const links = [
     { href: '/', label: 'Home' }
@@ -8,7 +8,16 @@ const links = [
 
 const Header = () => {
 
-    const { locales } = useRouter();
+    const { locale, locales, pathname, query, push } = useRouter();
+    const [selectedLocale, setSelectedLocale] = useState(locale);
+
+    const handleLocaleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const selectedLocale = e.target.value;
+        setSelectedLocale(selectedLocale);
+        push(pathname, pathname, { locale: selectedLocale });
+    }
+
+
     return (
         <header className='w-full h-fit px-10 py-3 sticky font-lato border-b border-[#967fa5]'>
             <div className='w-full h-fit flex flex-row justify-between items-center'>
@@ -25,9 +34,12 @@ const Header = () => {
                 </div>
                 <div className='flex flex-row gap-4'>
                     <span className='text-[#1e1d22] font-bold text-lg'>Language</span>
-                    <select name="" id="" className='min-w-[200px] bg-white rounded-[3px] px-2 text-[#1e1d22] border-black border'>
+                    <select
+                        value={selectedLocale}
+                        onChange={handleLocaleChange}
+                        className='min-w-[200px] bg-white rounded-[3px] px-2 text-[#1e1d22] border-black border'>
                         {locales?.map((locale, localeIndex) => (
-                            <option>{locale}</option>
+                            <option value={locale} key={localeIndex}>{locale}</option>
                         ))}
                     </select>
                 </div>

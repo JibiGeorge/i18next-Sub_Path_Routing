@@ -19,7 +19,7 @@ i18next is a popular internationalization (i18n) library used in web development
 ## Setup Instructions
 
 ```bash
-1. Clone the repository: `git clone https://github.com/JibiGeorge/firebase-auth.git`
+1. Clone the repository: `git clone https://github.com/JibiGeorge/i18next-Sub_Path_Routing.git`
 2. Navigate to the project directory: `cd i18next-Sub_Path_Routing`
 3. Install the project dependencies: `npm install`
 4. Run the application locally: `npm start`
